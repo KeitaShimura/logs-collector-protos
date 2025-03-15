@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package logs.v1;
+
+import "google/protobuf/timestamp.proto";
+import "logs/v1/models.proto";
+
+option go_package = "github.com/KeitaShimura/logs-collector-protos/go/logs/v1";
+
+service LogService {
+  // ログを送信する
+  rpc SendLog(SendLogRequest) returns (SendLogResponse);
+  // 指定した期間のログを取得
+  rpc GetLogs(GetLogsRequest) returns (GetLogsResponse);
+}
+
+message SendLogRequest {
+  Log log = 1;
+}
+
+message SendLogResponse {
+  string status = 1;
+}
+
+message GetLogsRequest {
+  google.protobuf.Timestamp start_time = 1;
+  google.protobuf.Timestamp end_time = 2;
+  string service = 3;
+  string level = 4;
+}
+
+message GetLogsResponse {
+  repeated Log logs = 1;
+}
