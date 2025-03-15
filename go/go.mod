@@ -1,6 +1,6 @@
 module github.com/KeitaShimura/logs-collector-protos/go
 
-go 1.23.4
+go 1.24.1
 
 require (
 	google.golang.org/grpc v1.71.0
