@@ -45,7 +45,7 @@
 
 ## 📂 ディレクトリ構成
 
-````sh
+```sh
 logs-collector-protos/
 ├── .github/workflows/      # CI/CD 設定
 │   ├── ci.yaml             # Lint チェックワークフロー
@@ -67,6 +67,7 @@ logs-collector-protos/
 ├── buf.work.yaml           # BSR (Buf Schema Registry) の設定
 ├── Makefile                # 自動化スクリプト
 ├── README.md               # 本ファイル
+```
 
 ## 🔧 環境セットアップ
 
@@ -83,4 +84,4 @@ logs-collector-protos/
 ```sh
 # Homebrew
 brew install bufbuild/buf/buf
-````
+```
