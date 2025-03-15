@@ -7,10 +7,11 @@ import "google/protobuf/timestamp.proto";
 option go_package = "github.com/KeitaShimura/logs-collector-protos/go/logs/v1";
 
 message Log {
-  string id = 1; // UUID
-  google.protobuf.Timestamp timestamp = 2; // ログ発生時刻
-  string service = 3; // 送信元サービス
+  string id = 1; // UUID（ログの一意な識別子）
+  string trace_id = 2; // 分散トレーシング用の一意なID
+  google.protobuf.Timestamp timestamp = 3; // ログ発生時刻
   string level = 4; // ログレベル (INFO, WARN, ERROR)
-  string message = 5; // ログメッセージ
-  map<string, string> metadata = 6; // 追加情報（IP, リクエスト ID など）
+  string service = 5; // 送信元サービス
+  string message = 6; // ログメッセージ
+  map<string, string> metadata = 7; // 追加情報（IP, リクエスト ID など）
 }

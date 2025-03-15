@@ -10,6 +10,7 @@ option go_package = "github.com/KeitaShimura/logs-collector-protos/go/logs/v1";
 service LogService {
   // ログを送信する
   rpc SendLog(SendLogRequest) returns (SendLogResponse);
+
   // 指定した期間のログを取得
   rpc GetLogs(GetLogsRequest) returns (GetLogsResponse);
 }
@@ -19,14 +20,17 @@ message SendLogRequest {
 }
 
 message SendLogResponse {
-  string status = 1;
+  bool success = 1; // 成功時: true, 失敗時: false
+  optional string error_message = 2; // 失敗時のエラーメッセージ（オプション）
 }
 
 message GetLogsRequest {
-  google.protobuf.Timestamp start_time = 1;
-  google.protobuf.Timestamp end_time = 2;
-  string service = 3;
-  string level = 4;
+  google.protobuf.Timestamp start_time = 1; // 検索開始時間
+  google.protobuf.Timestamp end_time = 2; // 検索終了時間
+  optional string service = 3; // フィルタリング対象のサービス名（省略可）
+  optional string level = 4; // フィルタリング対象のログレベル（省略可）
+  int32 limit = 5; // 取得件数（デフォルト: 100）
+  int32 offset = 6; // 取得開始位置（ページネーション用）
 }
 
 message GetLogsResponse {
