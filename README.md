@@ -29,17 +29,25 @@
 
 ### 🔹 **Makefile のコマンド一覧**
 
-| コマンド                  | 説明                                                        |
-| ------------------------- | ----------------------------------------------------------- |
-| `make fmt`                | `.proto` ファイルのフォーマットを `buf format` を使って適用 |
-| `make fmt-check`          | `.proto` のフォーマットをチェック (`--exit-code` 付き)      |
-| `make lint`               | `.proto` の Lint チェック (`buf lint` を実行)               |
-| `make lint-json`          | `.proto` の Lint チェック結果を JSON 形式で出力             |
-| `make build`              | `.proto` の構文チェック (`buf build`)                       |
-| `make deps`               | `buf mod update` を実行し、依存関係を更新                   |
-| `make gen-go`             | `.proto` から gRPC の Go コードを自動生成                   |
-| `make release TAG=v1.0.0` | 指定したタグ (`TAG`) で GitHub にリリース                   |
-| `make distclean`          | `go/` ディレクトリを削除（リセット）                        |
+#### 基本コマンド
+
+| コマンド           | 説明                                                                    |
+| ------------------ | ----------------------------------------------------------------------- |
+| `make all`         | `fmt-check`, `lint`, `build`, `update-deps`, `generate-go` を順番に実行 |
+| `make fmt`         | `.proto` ファイルのフォーマットを `buf format` を使って適用             |
+| `make fmt-check`   | `.proto` のフォーマットをチェック (`--exit-code` 付き)                  |
+| `make lint`        | `.proto` の Lint チェック (`buf lint` を実行)                           |
+| `make lint-json`   | `.proto` の Lint チェック結果を JSON 形式で出力                         |
+| `make build`       | `.proto` の構文チェック (`buf build`)                                   |
+| `make update-deps` | `buf mod update` を実行し、依存関係を更新                               |
+| `make generate-go` | `.proto` から gRPC の Go コードを自動生成 (`buf generate` 実行)         |
+| `make clean`       | `go/` ディレクトリを削除（リセット）                                    |
+
+#### リリース関連コマンド
+
+| コマンド                           | 説明                                                                      |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| `make release-and-push TAG=v1.0.0` | 指定したタグ (`TAG`) で GitHub にリリース (`git tag` & `git push --tags`) |
 
 ---
 
